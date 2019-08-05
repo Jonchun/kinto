@@ -5,11 +5,7 @@
 
 Memory muscle matters for programmers and developers.
 
-This project is only about one thing, remapping the control key to be next to your space bar no matter what keyboard you swap into your workflow and to do it without mastering xmodmap, setxkbmap or modifying system files. The intent is to make your keyboard work and feel like you're using macOS shortcuts, so you can seamlessly transition between operating systems.
-
-That also includes making sure that while using your terminal applications the control key maps itself back to the actual ctrl key to avoid terminal generated (tty) signals from misbehaving. You can also retain the ability to copy and paste normally without conflicting with the actual Ctrl+C sigint, which also happens to be the same behavior you'd experience on a mac or space-cadet keyboard, for you lisp fans. 
-
-Note: You will need to edit your terminal preferences and update the shortcuts you want to use, adding "Super+<key>" instead of "Ctrl+Shift+<key>".
+If it happens on your mac keyboard then it should happen the same in linux.
 
 ## What does this do exactly?
 
@@ -19,9 +15,11 @@ Remaps your keyboard to behave more like you're on a mac again and below is how 
 
 - Terminal apps (optional) - Alt will be Win/Super, Win/Super will be Alt, Ctrl will be Ctrl
 
-- New Features - Cursor/word-wise shortcut keys have been added to align with macOS keyboard shortcuts.
+### New Features
 
-- ~~Modify existing Terminal app keymap profiles (optional and with confirmation) - Copy, Paste, New Tab, etc will be remapped to use Win/Super in the physical Command (or Alt key) position.~~
+- Cursor/word-wise shortcut keys have been added to align with macOS keyboard shortcuts.
+- During Terminal app usage physical Alt (or Super) has been mapped to Ctrl+Shift+ for most common functions, based on Konsole defaults. Most likely applies to most other terminal apps.
+
 
 ## How to install
 

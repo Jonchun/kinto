@@ -12,12 +12,13 @@ swapbehavior=$4
 
 # echo $1 $2 $3 $4
 
-swapcmd_term="setxkbmap -option;setxkbmap -option altwin:swap_alt_win"
+swapcmd_term="setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.term $DISPLAY"
 fallbackcmd_gui=""
+check_gt="xkbcomp $DISPLAY - | grep -q mac_gui"
+check_tg="xkbcomp $DISPLAY - | grep -q mac_term"
+
 if [[ "$systemtype" == "windows" || "$systemtype" == "mac" ]]; then
 	swapcmd_gui="setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.gui $DISPLAY"
-	check_gt="setxkbmap -query | grep -v 'swap_alt_win' 1>/dev/null"
-	check_tg="setxkbmap -query | grep -q 'swap_alt_win'"
 elif [[ "$swapbehavior" == "both_mac" ]]; then
 	swapcmd_gui="setxkbmap -option;setxkbmap -option ctrl:swap_lwin_lctl; xkbcomp -w0 -i $internalid -I$HOME/.xkb ~/.xkb/keymap/kbd.chromebook.gui $DISPLAY"
 	swapcmd_term="setxkbmap -option;setxkbmap -device $internalid -option 'altwin:swap_alt_win'"
@@ -30,8 +31,7 @@ elif [[ "$swapbehavior" == "both_win" ]]; then
 	check_tg="setxkbmap -query | grep -v 'ctrl_alt_win' 1>/dev/null"
 elif [[ "$swapbehavior" == "none" ]]; then
 	swapcmd_gui="setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.chromebook.gui $DISPLAY"
-	check_gt="setxkbmap -query | grep -v 'swap_alt_win' 1>/dev/null"
-	check_tg="setxkbmap -query | grep -q 'swap_alt_win'"
+	swapcmd_term="setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.chromebook.term $DISPLAY"
 fi
 
 # echo "$systemtype $swapbehavior"
