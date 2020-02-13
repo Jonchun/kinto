@@ -96,15 +96,28 @@ if os.path.isdir(homedir + "/.xkb/keymap") == False:
 	time.sleep(0.5)
 os.system('setxkbmap -option')
 os.system('setxkbmap -print > ~/.xkb/keymap/kbd.mac.gui')
+# Add and test more logic and code here
+# Need to just extract out the symbols some and add that to the run
+# command instead of having it all in the single text file.
+# It'll make it easier for others to really add additional application
+# Support in a way that the installer can support with greater ease.
+#
+# Also need to debug kintox11.c - apparently the ability for additional
+# app categories has broken during a refactor.
+os.system('setxkbmap -print > ~/.xkb/keymap/kbd.mac.gui.browsers')
 os.system('setxkbmap -print > ~/.xkb/keymap/kbd.mac.term')
 time.sleep(0.5)
 
 symbols_gui_line = cmdline("cat ~/.xkb/keymap/kbd.mac.gui | grep -n 'xkb_symbols' | cut -f1 -d:").strip()
 types_gui_line = cmdline("cat ~/.xkb/keymap/kbd.mac.gui | grep -n 'xkb_types' | cut -f1 -d:").strip()
+symbols_gui_browsers_line = cmdline("cat ~/.xkb/keymap/kbd.mac.gui.browsers | grep -n 'xkb_symbols' | cut -f1 -d:").strip()
+types_gui_browsers_line = cmdline("cat ~/.xkb/keymap/kbd.mac.gui.browsers | grep -n 'xkb_types' | cut -f1 -d:").strip()
 symbols_term_line = cmdline("cat ~/.xkb/keymap/kbd.mac.term | grep -n 'xkb_symbols' | cut -f1 -d:").strip()
 
 cmdline('sed -i '' -e "' + symbols_gui_line + 's/\\"/' + keyboardconfigs[defaultkb-1]['xkb_symbols_gui'] + '\\"/2" ~/.xkb/keymap/kbd.mac.gui')
 cmdline('sed -i '' -e "' + types_gui_line + 's/\\"/' + keyboardconfigs[defaultkb-1]['xkb_types_gui'] + '\\"/2" ~/.xkb/keymap/kbd.mac.gui')
+cmdline('sed -i '' -e "' + symbols_gui_browsers_line + 's/\\"/' + keyboardconfigs[defaultkb-1]['xkb_symbols_gui'] + '\\"/2" ~/.xkb/keymap/kbd.mac.gui.browsers')
+cmdline('sed -i '' -e "' + types_gui_browsers_line + 's/\\"/' + keyboardconfigs[defaultkb-1]['xkb_types_gui'] + '\\"/2" ~/.xkb/keymap/kbd.mac.gui.browsers')
 cmdline('sed -i '' -e "' + symbols_term_line + 's/\\"/' + keyboardconfigs[defaultkb-1]['xkb_symbols_term'] + '\\"/2" ~/.xkb/keymap/kbd.mac.term')
 
 

@@ -1,6 +1,16 @@
 {"defaultapps":[{
+		"name":"gui",
+		"appnames":"",
+		"symbols": ""
+		},
+		{
 		"name":"term",
-		"appnames":[ "Gnome-terminal","konsole","io.elementary.terminal","terminator","sakura","guake","tilda","xterm","eterm" ]
+		"appnames":[ "Gnome-terminal","konsole","io.elementary.terminal","terminator","sakura","guake","tilda","xterm","eterm" ],
+		"symbols":""
+		},{
+		"name":"browsers",
+		"appnames":[ "Chromium","Firefox" ],
+		"symbols":"+mac_gui(mac_levelssym_browsers)"
 	}],
 	"defaulttypes":["windows","mac","chromebook"],
 	"defaults":[{

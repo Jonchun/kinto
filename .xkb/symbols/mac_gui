@@ -30,3 +30,17 @@ default partial xkb_symbols "mac_levelssym" {
     //    actions[Group1]= [      NoAction(),      NoAction(), RedirectKey(key=<DELE>,clearmods=Control)]
     // };
 };
+partial xkb_symbols "mac_levelssym_browsers" {
+    // Go Back - Ctrl+[
+    replace key <LEFT> {
+        type[Group1]= "ONE_LEVEL_CTRL",
+        symbols[Group1]= [         Left,         Left, NoSymbol ],
+        actions[Group1]= [      NoAction(), NoAction(), RedirectKey(key=<AD11>)]
+    };
+    // Forwards - Ctrl+]
+    replace key <RGHT> {
+        type[Group1]= "ONE_LEVEL_CTRL",
+        symbols[Group1]= [         Right,         Right, NoSymbol ],
+        actions[Group1]= [      NoAction(), NoAction(), RedirectKey(key=<AD12>)]
+    };
+};
