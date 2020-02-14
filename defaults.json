@@ -1,6 +1,16 @@
 {"defaultapps":[{
+		"name":"gui",
+		"run":"",
+		"de":[],
+		"appnames":[ "" ],
+		"symbols":"+mac_gui(mac_levelssym)",
+		"types":"+mac_gui(addmac_levels)"
+	},
+	{
 		"name":"term",
-		"appnames":[ "Gnome-terminal","konsole","io.elementary.terminal","terminator","sakura","guake","tilda","xterm","eterm" ]
+		"appnames":[ "Gnome-terminal","konsole","io.elementary.terminal","terminator","sakura","guake","tilda","xterm","eterm" ],
+		"symbols":"+mac_term(mac_levelssym)",
+		"types":""
 	}],
 	"defaulttypes":["windows","mac","chromebook"],
 	"defaults":[{
@@ -11,9 +21,9 @@
 		"description":"Standard Windows 104 Keyboards",
 		"gui":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.gui $DISPLAY",
 		"term":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.term $DISPLAY",
-		"xkb_symbols_gui":"+altwin(ctrl_alt_win)+mac_gui(mac_levelssym)",
-		"xkb_symbols_term":"+altwin(swap_alt_win)+mac_term(mac_levelssym)",
-		"xkb_types_gui":"+mac_gui(addmac_levels)",
+		"xkb_symbols_gui":"+altwin(ctrl_alt_win)",
+		"xkb_symbols_term":"+altwin(swap_alt_win)",
+		"xkb_types_gui":"",
 		"xkb_types_term":""
 	},
 	{
@@ -24,9 +34,9 @@
 		"description":"Standard Mac Keyboards with Apple driver",
 		"gui":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.gui $DISPLAY",
 		"term":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.term $DISPLAY",
-		"xkb_symbols_gui":"+altwin(ctrl_alt_win)+mac_gui(mac_levelssym)",
-		"xkb_symbols_term":"+altwin(swap_alt_win)+mac_term(mac_levelssym)",
-		"xkb_types_gui":"+mac_gui(addmac_levels)",
+		"xkb_symbols_gui":"+altwin(ctrl_alt_win)",
+		"xkb_symbols_term":"+altwin(swap_alt_win)",
+		"xkb_types_gui":"",
 		"xkb_types_term":"",
 		"hack": "echo '1' | sudo tee -a /sys/module/hid_apple/parameters/swap_opt_cmd;echo 'options hid_apple swap_opt_cmd=1' | sudo tee -a /etc/modprobe.d/hid_apple.conf;sudo update-initramfs -u -k all"
 	},
@@ -38,9 +48,9 @@
 		"description":"Standard Mac Keyboards",
 		"gui":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.gui $DISPLAY",
 		"term":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.term $DISPLAY",
-		"xkb_symbols_gui":"+ctrl(swap_lwin_lctl)+ctrl(swap_rwin_rctl)+mac_gui(mac_levelssym)",
-		"xkb_symbols_term":"+altwin(alt_super_win)+mac_term(mac_levelssym)",
-		"xkb_types_gui":"+mac_gui(addmac_levels)",
+		"xkb_symbols_gui":"+ctrl(swap_lwin_lctl)+ctrl(swap_rwin_rctl)",
+		"xkb_symbols_term":"+altwin(alt_super_win)",
+		"xkb_types_gui":"",
 		"xkb_types_term":""
 	},
 	{
@@ -51,10 +61,12 @@
 		"description":"Standard Chromebook Keyboards",
 		"gui":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.gui $DISPLAY",
 		"term":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.term $DISPLAY",
-		"xkb_symbols_gui":"+chromebook(swap_lalt_lctrl)+mac_gui(mac_levelssym)",
-		"xkb_symbols_term":"+altwin(swap_alt_win)+mac_term_chromebook(mac_levelssym)",
-		"xkb_types_gui":"+mac_gui(addmac_levels)",
-		"xkb_types_term":""
+		"xkb_symbols_gui":"+chromebook(swap_lalt_lctrl)",
+		"xkb_symbols_term":"+altwin(swap_alt_win)",
+		"xkb_types_gui":"",
+		"xkb_types_term":"",
+		//override term type
+		"app_term_type":"+mac_term_chromebook(mac_levelssym)"
 	},
 	{
 		"id": 5,
@@ -65,10 +77,12 @@
 		"gui":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.gui $DISPLAY; setxkbmap -device $usbid -option altwin:ctrl_alt_win",
 		"term":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.term $DISPLAY",
 		"fallbackgui":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.gui $DISPLAY",
-		"xkb_symbols_gui":"+chromebook(swap_lalt_lctrl)+mac_gui(mac_levelssym)",
-		"xkb_symbols_term":"+altwin(swap_alt_win)+mac_term_chromebook(mac_levelssym)",
-		"xkb_types_gui":"+mac_gui(addmac_levels)",
-		"xkb_types_term":""
+		"xkb_symbols_gui":"+chromebook(swap_lalt_lctrl)",
+		"xkb_symbols_term":"+altwin(swap_alt_win)",
+		"xkb_types_gui":"",
+		"xkb_types_term":"",
+		//override term type
+		"app_term_type":"+mac_term_chromebook(mac_levelssym)"
 	},
 	{
 		"id": 6,
@@ -78,9 +92,11 @@
 		"description":"Chromebook with Mac Keyboard",
 		"gui":"setxkbmap -option;setxkbmap -option ctrl:swap_lwin_lctl; xkbcomp -w0 -i $internalid -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.gui $DISPLAY",
 		"term":"setxkbmap -option;xkbcomp -w0 -I$HOME/.xkb ~/.xkb/keymap/kbd.mac.term $DISPLAY",
-		"xkb_symbols_gui":"+chromebook(swap_lalt_lctrl)+mac_gui(mac_levelssym)",
-		"xkb_symbols_term":"+altwin(swap_alt_win)+mac_term_chromebook(mac_levelssym)",
-		"xkb_types_gui":"+mac_gui(addmac_levels)",
-		"xkb_types_term":""
+		"xkb_symbols_gui":"+chromebook(swap_lalt_lctrl)",
+		"xkb_symbols_term":"+altwin(swap_alt_win)",
+		"xkb_types_gui":"",
+		"xkb_types_term":"",
+		//override term type
+		"app_term_type":"+mac_term_chromebook(mac_levelssym)"
 	}]
 }

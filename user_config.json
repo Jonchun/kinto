@@ -2,14 +2,32 @@
 		"name":"gui",
 		"run":"",
 		"de":[],
-		"appnames":[ "" ]
+		"appnames":[ "" ],
+		"symbols":"",
+		"types":""
 	},
 	{
 		"name":"term",
 		"run":"",
 		"de":[],
-		"appnames":[ "Gnome-terminal","konsole","io.elementary.terminal","terminator","sakura","guake","tilda","xterm","eterm" ]
+		"appnames":[ "Gnome-terminal","konsole","io.elementary.terminal","terminator","sakura","guake","tilda","xterm","eterm" ],
+		"symbols":"",
+		"types":""
+	},
+	{
+		"name":"browsers",
+		"run":"",
+		"de":[],
+		"appnames":[ "" ],
+		"symbols":"",
+		"types":""
 	}],
+	"default_xkb":{
+		"gui_symbols":"",
+		"gui_types":"",
+		"term_symbols":"",
+		"term_types":""
+	},
 	"init": [],
 	"detypes":["gnome2","gnome3","kde4","kde5","xfce","i3wm"],
 	"de":[{
